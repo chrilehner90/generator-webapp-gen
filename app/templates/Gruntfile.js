@@ -42,8 +42,18 @@ module.exports = function (grunt) {
       server: {
         path: 'http://localhost:<%%= connect.options.port %>',
       }
+    },
+    scss: {
+      dist: {
+        options: {
+          style: 'expanded'
+        },
+        files: {
+          'app/assets/stylesheets/app.css': 'app/assets/stylesheets/app.scss'
+        }
+      }
     }
   });
 
-  grunt.registerTask('server', ['connect:livereload', 'open', 'watch']);
+  grunt.registerTask('server', ['scss', 'connect:livereload', 'open', 'watch']);
 };
