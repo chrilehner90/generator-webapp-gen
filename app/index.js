@@ -52,14 +52,14 @@ var WebappGenGenerator = yeoman.generators.Base.extend({
     }];
 
     this.prompt(prompts, function (features) {
-      function includedBowerFeature(f) { return bower.indexOf(f) !== -1; }
+      function includedBowerFeature(f) {
+        return bower.indexOf(f) !== -1;
+      }
 
 
       var bower = features.bowerPackages
 
       this.appTitle = features.appTitle;
-
-      console.log(this.title);
 
       this.bootstrap = includedBowerFeature("includeBootstrap");
       this.jQuery = includedBowerFeature("includeJQuery");
@@ -78,16 +78,21 @@ var WebappGenGenerator = yeoman.generators.Base.extend({
     this.mkdir('app/assets/javascripts');
 
     // this.template('index.html', 'index.html'); ???
-    this.copy('index.html', 'index.html');
+    this.template('index.html', 'index.html');
+    this.template('scss/app.scss', 'app/assets/stylesheets/app.scss');
 
     this.copy('Gruntfile.js', 'Gruntfile.js');
+
     this.copy('_package.json', 'package.json');
     this.copy('_bower.json', 'bower.json');
+    this.template('_config.json', 'config.json');
   },
 
   projectfiles: function () {
-    this.copy('editorconfig', '.editorconfig');
-    this.copy('jshintrc', '.jshintrc');
+    this.copy('config/gitignore', '.gitignore')
+    this.copy('config/bowerrc', '.bowerrc');
+    this.copy('config/editorconfig', '.editorconfig');
+    this.copy('config/jshintrc', '.jshintrc');
   }
 });
 
