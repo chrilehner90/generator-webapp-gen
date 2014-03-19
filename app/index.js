@@ -80,6 +80,7 @@ var WebappGenGenerator = yeoman.generators.Base.extend({
     // this.template('index.html', 'index.html'); ???
     this.template('index.html', 'index.html');
     this.template('scss/app.scss', 'app/assets/stylesheets/app.scss');
+    this.template('js/app.js', 'app/assets/javascripts/app.js');
 
     this.copy('Gruntfile.js', 'Gruntfile.js');
 

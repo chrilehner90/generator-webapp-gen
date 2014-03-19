@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "dependencies": {
   	<% if(jQuery) { %>
-  		"jQuery": "*",
+  		"jquery": "*",
   	<% } if (angular) { %>
   		"angular": "*",
   	<% } %>

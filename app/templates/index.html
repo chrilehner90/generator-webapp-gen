@@ -3,7 +3,18 @@
 <head>
 	<title><%= appTitle %></title>
 	<meta charset="UTF-8">
-	<link rel="stylesheet" type="text/css" href="app/assets/stylesheets/app.css">
+
+
+	<% if(bootstrap) { %>
+	<link rel="stylesheet" type="text/css" href="bower_components/bootstrap-sass-official/vendor/assets/stylesheets/bootstrap.css">
+	<script type="text/javascript" src="bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap.js"></script>
+	<% } if(jQuery) { %>
+	<script type="text/javascript" src="bower_components/jQuery/dist/jquery.min.js"></script>
+	<% } if(angular) { %>
+	<script type="text/javascript" src="bower_components/angular/angular.min.js"></script>
+	<% } %>
+	<link rel="stylesheet" href="app/assets/stylesheets/app.css">
+	<script type="text/javascript" src="app/assets/javascripts/app.js"></script>
 </head>
 
 <body>
@@ -14,5 +25,7 @@
 			inner
 		</div>
 	</div>
+
+	<button type="button" class="btn btn-primary">Button</button>
 </body>
 <html>

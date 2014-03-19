@@ -2,9 +2,9 @@ h1 {
 	color: blue;
 }
 
-div.outer {
-	background-color: green;
+.outer {
+	background-color: red;
 	.inner {
-		background-color: red;
+		background-color: green;
 	}
 }
