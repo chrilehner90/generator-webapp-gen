@@ -76,8 +76,11 @@ var WebappGenGenerator = yeoman.generators.Base.extend({
     this.mkdir('app/assets/images');
     this.mkdir('app/assets/stylesheets');
     this.mkdir('app/assets/javascripts');
-    this.mkdir('app/assets/fonts');
 
+    // this.template('index.html', 'index.html'); ???
+    this.copy('index.html', 'index.html');
+
+    this.copy('Gruntfile.js', 'Gruntfile.js');
     this.copy('_package.json', 'package.json');
     this.copy('_bower.json', 'bower.json');
   },
