@@ -6,10 +6,14 @@
   },
   "devDependencies": {
   	"grunt": "*",
-  	"grunt-contrib-compass": "*",
+    "bower": "*",
   	"grunt-contrib-jshint": "*",
   	"grunt-contrib-uglify": "*",
   	"grunt-contrib-concat": "*",
-  	"grunt-contrib-watch": "*"
+  	"grunt-contrib-watch": "*",
+    "grunt-contrib-connect": "*",
+    "connect-livereload": "*",
+    "grunt-open": "*",
+    "matchdep": "*"
   }
 }

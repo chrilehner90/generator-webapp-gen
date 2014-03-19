@@ -1,15 +1,49 @@
 'use strict';
 
+var LIVERELOAD_PORT = 35729;
+var lrSnippet = require('connect-livereload')({port: LIVERELOAD_PORT});
+var mountFolder = function (connect, dir) {
+  return connect.static(require('path').resolve(dir));
+};
+
 module.exports = function (grunt) {
-	// Project configuration.
-	grunt.initConfig({});
+// load all grunt tasks
+  require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks);
 
-	// A very basic default task.
-	grunt.registerTask('default', 'Log some stuff.', function() {
-		grunt.log.write('Logging some stuff...').ok();
-	});
+  grunt.initConfig({
+    watch: {
+      options: {
+        nospawn: true,
+        livereload: LIVERELOAD_PORT
+      },
+      livereload: {
+        files: [
+          'index.html'
+        ]
+      }
+    },
+    connect: {
+      options: {
+        port: 9000,
+        hostname: 'localhost'
+      },
+      livereload: {
+        options: {
+          middleware: function (connect) {
+            return [
+              lrSnippet,
+              mountFolder(connect, '.')
+            ];
+          }
+        }
+      }
+    },
+    open: {
+      server: {
+        path: 'http://localhost:<%%= connect.options.port %>',
+      }
+    }
+  });
 
-grunt.loadNpmTasks('grunt-contrib-jshint');
-grunt.loadNpmTasks('grunt-contrib-concat');
-grunt.loadNpmTasks('grunt-contrib-uglify');
+  grunt.registerTask('server', ['connect:livereload', 'open', 'watch']);
 };
