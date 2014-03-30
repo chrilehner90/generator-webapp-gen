@@ -1,3 +1,3 @@
 $(function() {
-	console.log("jQuery works, madafaka!");
+	console.log("jQuery works!");
 });

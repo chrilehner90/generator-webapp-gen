@@ -16,9 +16,15 @@ module.exports = function (grunt) {
         nospawn: true,
         livereload: LIVERELOAD_PORT
       },
+      css: { // watch all .scss files and call the sass task to convert them to .css
+        files: 'app/assets/stylesheets/*.scss',
+        tasks: ['sass']
+      },
       livereload: {
         files: [
-          'index.html'
+          'index.html',
+          'app/assets/stylesheets/*.css', // reload converted .css file
+          'app/assets/javascripts/app.js'
         ]
       }
     },
