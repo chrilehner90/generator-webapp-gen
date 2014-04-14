@@ -13,6 +13,7 @@
   	"grunt-contrib-watch": "*",
     "grunt-contrib-connect": "*",
     "grunt-contrib-sass": "*",
+    "grunt-contrib-jasmine": "*",
     "connect-livereload": "*",
     "grunt-open": "*",
     "matchdep": "*"

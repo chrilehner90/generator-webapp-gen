@@ -24,7 +24,7 @@ module.exports = function (grunt) {
         files: [
           'index.html',
           'app/assets/stylesheets/*.css', // reload converted .css file
-          'app/assets/javascripts/app.js'
+          'app/assets/javascripts/*.js'
         ]
       }
     },
