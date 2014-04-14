@@ -1,12 +1,12 @@
 {
   "name": "generator-webapp-gen",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Yeoman generator",
   "license": "MIT",
   "main": "app/index.js",
   "repository": "chrilehner90/generator-webapp-gen",
   "author": {
-    "name": "",
+    "name": "Christian Lehner",
     "email": "",
     "url": "https://github.com/chrilehner90"
   },
