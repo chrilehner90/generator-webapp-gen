@@ -96,6 +96,7 @@ var WebappGenGenerator = yeoman.generators.Base.extend({
     this.copy('_package.json', 'package.json');
     this.copy('_bower.json', 'bower.json');
     this.template('_config.json', 'config.json');
+    this.template('_jshintrc', 'jshintrc');
   },
 
   projectfiles: function () {
