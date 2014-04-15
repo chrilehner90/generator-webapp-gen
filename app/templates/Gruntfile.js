@@ -19,11 +19,11 @@
         },
         scripts: {
           files: ['app/assets/javascripts/**/*.js', 'test/*Spec.js'],
-          tasks: ['test', 'jshint']
+          tasks: ['test', 'uglify']
         },
         css: { // watch all .scss files and call the sass task to convert them to .css
           files: 'app/assets/stylesheets/*.scss',
-          tasks: ['sass']
+          tasks: ['sass', 'uglify']
         },
         livereload: {
           files: [
@@ -60,7 +60,7 @@
             style: 'expanded'
           },
           files: {
-            'app/assets/stylesheets/css/app.css': 'app/assets/stylesheets/scss/app.scss',
+            'app/assets/stylesheets/css/style.css': 'app/assets/stylesheets/scss/style.scss',
             'bower_components/bootstrap-sass-official/vendor/assets/stylesheets/bootstrap.css': 'bower_components/bootstrap-sass-official/vendor/assets/stylesheets/bootstrap.scss'
           }
         }
@@ -76,10 +76,29 @@
       },
       jshint: {
         all: ['Gruntfile.js', 'app/assets/javascripts/**/*.js', 'test/**/*.js']
+      },
+      uglify: {
+        options: {
+          compress: {
+            drop_console: true
+          }
+        },
+        my_target: {
+          files: {
+            'app/assets/javascripts/min/app.min.js': ['app/assets/javascripts/**/*.js']
+          }
+        }
+      },
+      cssmin: {
+        combine: {
+          files: {
+            'app/assets/stylesheets/css/min/app.min.css': ['app/assets/stylesheets/css/*.css']
+          }
+        }
       }
     });
 
-    grunt.registerTask('server', ['sass', 'connect:livereload', 'open', 'watch']);
+    grunt.registerTask('server', ['sass', 'uglify', 'cssmin', 'connect:livereload', 'open', 'watch']);
     grunt.registerTask('test', ['jasmine', 'jshint']);
   };
 })();

@@ -77,7 +77,9 @@ var WebappGenGenerator = yeoman.generators.Base.extend({
     this.mkdir('app/assets/stylesheets');
     this.mkdir('app/assets/stylesheets/scss');
     this.mkdir('app/assets/stylesheets/css');
+    this.mkdir('app/assets/stylesheets/min/css');
     this.mkdir('app/assets/javascripts');
+    this.mkdir('app/assets/javascripts/min');
 
     // tests
     this.mkdir('test');
@@ -85,9 +87,9 @@ var WebappGenGenerator = yeoman.generators.Base.extend({
 
     // html, css, js
     this.template('index.html', 'index.html');
-    this.template('stylesheets/app.scss', 'app/assets/stylesheets/scss/app.scss');
+    this.template('stylesheets/style.scss', 'app/assets/stylesheets/scss/style.scss');
     this.template('stylesheets/reset.css', 'app/assets/stylesheets/css/reset.css');
-    this.template('javascripts/app.js', 'app/assets/javascripts/app.js');
+    this.template('javascripts/script.js', 'app/assets/javascripts/script.js');
 
     // Gruntfile
     this.copy('Gruntfile.js', 'Gruntfile.js');
