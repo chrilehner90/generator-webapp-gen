@@ -1,13 +1,14 @@
 {
-  "name": "<%= _.slugify( appTitle ) %>",
-  "version": "0.0.1",
-  "dependencies": {
-  	<% if(jQuery) { %>
-  		"jquery": "*",
-  	<% } if (angular) { %>
-  		"angular": "*",
-  	<% } %>
-  	"bootstrap-sass-official": "*"
-  }
+	"name": "<%= _.slugify( appTitle ) %>",
+	"version": "0.0.1",
+	"dependencies": {
+		<% if(jQuery) { %>
+			"jquery": "*",
+		<% } if (angular) { %>
+			"angular": "*",
+		<% } if(bootstrap) { %>
+			"bootstrap-sass-official": "*"
+		<% } %>
+	}
 }
 

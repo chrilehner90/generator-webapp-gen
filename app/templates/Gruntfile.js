@@ -16,6 +16,10 @@ module.exports = function (grunt) {
         nospawn: true,
         livereload: LIVERELOAD_PORT
       },
+      scripts: {
+        files: ['app/assets/javascripts/**/*.js', 'test/*Spec.js'],
+        tasks: ['test']
+      },
       css: { // watch all .scss files and call the sass task to convert them to .css
         files: 'app/assets/stylesheets/*.scss',
         tasks: ['sass']
@@ -46,7 +50,7 @@ module.exports = function (grunt) {
     },
     open: {
       server: {
-        path: 'http://localhost:<%%= connect.options.port %>',
+        path: 'http://localhost:<%%= connect.options.port %>'
       }
     },
     sass: {
@@ -55,12 +59,22 @@ module.exports = function (grunt) {
           style: 'expanded'
         },
         files: {
-          'app/assets/stylesheets/app.css': 'app/assets/stylesheets/app.scss',
+          'app/assets/stylesheets/css/app.css': 'app/assets/stylesheets/scss/app.scss',
           'bower_components/bootstrap-sass-official/vendor/assets/stylesheets/bootstrap.css': 'bower_components/bootstrap-sass-official/vendor/assets/stylesheets/bootstrap.scss'
+        }
+      }
+    },
+    jasmine: {
+      pivotal: {
+        src: 'app/assets/javascripts/**/*.js',
+        options: {
+          specs: 'test/*Spec.js',
+          helpers: 'test/*Helper.js'
         }
       }
     }
   });
 
   grunt.registerTask('server', ['sass', 'connect:livereload', 'open', 'watch']);
+  grunt.registerTask('test', ['jasmine']);
 };
