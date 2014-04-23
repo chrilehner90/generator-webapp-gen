@@ -4,28 +4,38 @@
 	<title><%= appTitle %></title>
 	<meta charset="UTF-8">
 
-
 	<% if(bootstrap) { %>
-	<link rel="stylesheet" type="text/css" href="bower_components/bootstrap-sass-official/vendor/assets/stylesheets/bootstrap.css">
-	<script type="text/javascript" src="bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap.js"></script>
-	<% } if(jQuery) { %>
-	<script type="text/javascript" src="bower_components/jQuery/dist/jquery.min.js"></script>
-	<% } if(angular) { %>
-	<script type="text/javascript" src="bower_components/angular/angular.min.js"></script>
+	<script type="text/javascript" src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 	<% } %>
 	<link rel="stylesheet" href="app/assets/stylesheets/css/min/app.min.css">
-	<script type="text/javascript" src="app/assets/javascripts/app.js"></script>
+	<script type="text/javascript" src="app/assets/javascripts/min/app.min.js"></script>
 </head>
 
 <body>
-	<h1>Welcome to your fancy <%= appTitle %></h1>
-	<div class="outer">
-		outer
-		<div class="inner">
-			inner
-		</div>
-	</div>
+	<div class="content">
+		<header>
+			<h1>Welcome to <%= appTitle %></h1>
+		</header>
 
-	<button type="button" class="btn btn-primary">Button</button>
+		<article>Feel free to fork my repo at <a href="https://github.com/chrilehner90/generator-webapp-gen" target="_blank">Github</a></article>
+		
+		<% if(bootstrap || jQuery) { %>
+		<article>
+			<header>
+				<h1>You have installed the following bower packages:</h1>
+			</header>
+			<ul>
+				<% if(bootstrap) { %>
+					<li>Bootstrap</li>
+				<% } %>
+				<% if(jQuery) { %>
+					<li>jQuery</li>
+				<% } %>
+			</ul>
+		</article>
+		<% } %>
+
+		<footer>This Yeoman generator was made by <a href="https://twitter.com/chri_lehner" target="_blank">Christian Lehner</a></footer>
+	</div>
 </body>
 <html>
