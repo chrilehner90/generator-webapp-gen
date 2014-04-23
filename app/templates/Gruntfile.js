@@ -61,7 +61,6 @@
           },
           files: {
             'app/assets/stylesheets/css/style.css': 'app/assets/stylesheets/scss/style.scss',
-            'bower_components/bootstrap-sass-official/vendor/assets/stylesheets/bootstrap.css': 'bower_components/bootstrap-sass-official/vendor/assets/stylesheets/bootstrap.scss'
           }
         }
       },
@@ -77,6 +76,18 @@
       jshint: {
         all: ['Gruntfile.js', 'app/assets/javascripts/**/*.js', 'test/**/*.js']
       },
+      concat: {
+        options: {
+          separator: ";"
+        },
+        dist: {
+          src: [
+                'app/assets/javascripts/**/*.js',
+                'bower_components/jQuery/dist/jquery.min.js'
+              ],
+          dest: 'app/assets/javascripts/app.js'
+        }
+      },
       uglify: {
         options: {
           compress: {
@@ -85,20 +96,25 @@
         },
         my_target: {
           files: {
-            'app/assets/javascripts/min/app.min.js': ['app/assets/javascripts/**/*.js']
+            'app/assets/javascripts/min/app.min.js': ['app/assets/javascripts/app.js']
           }
         }
       },
       cssmin: {
         combine: {
           files: {
-            'app/assets/stylesheets/css/min/app.min.css': ['app/assets/stylesheets/css/*.css']
+            'app/assets/stylesheets/css/min/app.min.css': [ 
+                                                            'bower_components/normalize.css/normalize.css',
+                                                            'bower_components/bootstrap/dist/css/bootstrap.min.css',
+                                                            'app/assets/stylesheets/css/*.css'
+                                                          ]
           }
         }
       }
     });
 
-    grunt.registerTask('server', ['sass', 'uglify', 'cssmin', 'connect:livereload', 'open', 'watch']);
     grunt.registerTask('test', ['jasmine', 'jshint']);
+    grunt.registerTask('serve', ['test', 'sass', 'concat', 'uglify', 'cssmin', 'connect:livereload', 'open', 'watch']);
+    
   };
 })();

@@ -4,11 +4,11 @@
 	"dependencies": {
 		<% if(jQuery) { %>
 			"jquery": "*",
-		<% } if (angular) { %>
-			"angular": "*",
-		<% } if(bootstrap) { %>
-			"bootstrap-sass-official": "*"
 		<% } %>
+		<% if(bootstrap) { %>
+			"bootstrap": "*",
+		<% } %>
+		"normalize.css": "*"
 	}
 }
 
