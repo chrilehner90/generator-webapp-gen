@@ -29,7 +29,7 @@ var WebappGenGenerator = yeoman.generators.Base.extend({
       type: 'input',
       name: 'appTitle',
       message: 'What\'s the name of your new fancy app?',
-      default: 'New Awesome App'
+      default: 'Webapp'
     },{
       type: 'checkbox',
       name: 'bowerPackages',
@@ -43,10 +43,6 @@ var WebappGenGenerator = yeoman.generators.Base.extend({
           name: 'jQuery',
           value: 'includeJQuery',
           checked: true
-        }, {
-          name: 'Angular JS',
-          value: 'includeAngular',
-          checked: false
         }
       ]
     }];
@@ -63,7 +59,6 @@ var WebappGenGenerator = yeoman.generators.Base.extend({
 
       this.bootstrap = includedBowerFeature("includeBootstrap");
       this.jQuery = includedBowerFeature("includeJQuery");
-      this.angular = includedBowerFeature("includeAngular");
 
       done();
     }.bind(this));
@@ -88,7 +83,6 @@ var WebappGenGenerator = yeoman.generators.Base.extend({
     // html, css, js
     this.template('index.html', 'index.html');
     this.template('stylesheets/style.scss', 'app/assets/stylesheets/scss/style.scss');
-    this.template('stylesheets/reset.css', 'app/assets/stylesheets/css/reset.css');
     this.template('javascripts/script.js', 'app/assets/javascripts/script.js');
 
     // Gruntfile
