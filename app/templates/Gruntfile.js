@@ -23,7 +23,7 @@
         },
         css: { // watch all .scss files and call the sass task to convert them to .css
           files: 'app/assets/stylesheets/*.scss',
-          tasks: ['sass', 'uglify']
+          tasks: ['sass', 'cssmin']
         },
         livereload: {
           files: [
@@ -82,10 +82,9 @@
         },
         dist: {
           src: [
-                'app/assets/javascripts/**/*.js',
-                'bower_components/jQuery/dist/jquery.min.js'
+                'app/assets/javascripts/**/*.js'
               ],
-          dest: 'app/assets/javascripts/app.js'
+          dest: 'app/assets/javascripts/main.js'
         }
       },
       uglify: {
@@ -96,18 +95,18 @@
         },
         my_target: {
           files: {
-            'app/assets/javascripts/min/app.min.js': ['app/assets/javascripts/app.js']
+            'app/assets/javascripts/min/main.min.js': ['app/assets/javascripts/main.js']
           }
         }
       },
       cssmin: {
         combine: {
           files: {
-            'app/assets/stylesheets/css/min/app.min.css': [ 
-                                                            'bower_components/normalize.css/normalize.css',
-                                                            'bower_components/bootstrap/dist/css/bootstrap.min.css',
-                                                            'app/assets/stylesheets/css/*.css'
-                                                          ]
+            'app/assets/stylesheets/css/min/main.min.css': [ 
+              'bower_components/normalize.css/normalize.css',
+              'bower_components/bootstrap/dist/css/bootstrap.min.css',
+              'app/assets/stylesheets/css/*.css'
+            ]
           }
         }
       }
@@ -115,6 +114,7 @@
 
     grunt.registerTask('test', ['jasmine', 'jshint']);
     grunt.registerTask('serve', ['test', 'sass', 'concat', 'uglify', 'cssmin', 'connect:livereload', 'open', 'watch']);
+    grunt.registerTask('s', ['serve']);
     
   };
 })();
