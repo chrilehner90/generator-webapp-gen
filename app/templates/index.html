@@ -3,39 +3,49 @@
 <head>
 	<title><%= appTitle %></title>
 	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<% if(bootstrap) { %>
+
+	<% if(jQuery) { %>
+	<script type="text/javascript" src="bower_components/jQuery/dist/jquery.min.js"></script>
+	<% } if(bootstrap) { %>
 	<script type="text/javascript" src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 	<% } %>
-	<link rel="stylesheet" href="app/assets/stylesheets/css/min/app.min.css">
-	<script type="text/javascript" src="app/assets/javascripts/min/app.min.js"></script>
+
+	<link rel="stylesheet" href="app/assets/stylesheets/css/min/main.min.css">
+	
+	<script type="text/javascript" src="app/assets/javascripts/min/main.min.js"></script>
 </head>
 
 <body>
-	<div class="content">
-		<header>
-			<h1>Welcome to <%= appTitle %></h1>
-		</header>
+	<div class="container-fluid">
+		<div class="row">
+			<div class="content col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3">
+				<header>
+					<h1>Welcome to <%= appTitle %></h1>
+				</header>
 
-		<article>Feel free to fork my repo at <a href="https://github.com/chrilehner90/generator-webapp-gen" target="_blank">Github</a></article>
-		
-		<% if(bootstrap || jQuery) { %>
-		<article>
-			<header>
-				<h1>You have installed the following bower packages:</h1>
-			</header>
-			<ul>
-				<% if(bootstrap) { %>
-					<li>Bootstrap</li>
+				<article>Feel free to fork my repo at <a href="https://github.com/chrilehner90/generator-webapp-gen" target="_blank">Github</a></article>
+				
+				<% if(bootstrap || jQuery) { %>
+				<article>
+					<header>
+						<h1>You have installed the following bower packages:</h1>
+					</header>
+					<ul>
+						<% if(bootstrap) { %>
+							<li>Bootstrap</li>
+						<% } %>
+						<% if(jQuery) { %>
+							<li>jQuery</li>
+						<% } %>
+					</ul>
+				</article>
 				<% } %>
-				<% if(jQuery) { %>
-					<li>jQuery</li>
-				<% } %>
-			</ul>
-		</article>
-		<% } %>
 
-		<footer>This Yeoman generator was made by <a href="https://twitter.com/chri_lehner" target="_blank">Christian Lehner</a></footer>
+				<footer>This Yeoman generator was made by <a href="https://twitter.com/chri_lehner" target="_blank">Christian Lehner</a></footer>
+			</div>
+		</div>
 	</div>
 </body>
 <html>
