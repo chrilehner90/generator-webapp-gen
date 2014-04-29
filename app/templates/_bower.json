@@ -6,9 +6,8 @@
 			"jquery": "*",
 		<% } %>
 		<% if(bootstrap) { %>
-			"bootstrap": "*",
+			"bootstrap": "*"
 		<% } %>
-		"normalize.css": "*"
 	}
 }
 
