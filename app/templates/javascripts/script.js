@@ -1,1 +1,1 @@
-var answer = 42;
+var test = "test";
