@@ -22,7 +22,7 @@
           tasks: ['test', 'uglify']
         },
         css: { // watch all .scss files and call the sass task to convert them to .css
-          files: 'assets/stylesheets/*.scss',
+          files: 'assets/stylesheets/scss/*.scss',
           tasks: ['sass', 'cssmin']
         },
         livereload: {
@@ -69,6 +69,7 @@
           files: {
             'assets/stylesheets/css/min/main.min.css': [ 
               'bower_components/bootstrap/dist/css/bootstrap.min.css',
+              'bower_components/fontawesome/css/font-awesome.min.css',
               'assets/stylesheets/css/*.css'
             ]
           }

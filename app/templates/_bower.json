@@ -3,9 +3,10 @@
   "version": "0.0.1",
   "dependencies": {
 		<% if(jQuery) { %>
-		"jquery": "*"
-		<% } if(bootstrap) { %>,
-		"bootstrap": "*"
+		"jquery": "*",
+		<% } if(bootstrap) { %>
+		"bootstrap": "*",
 		<% } %>
+		"fontawesome": "*"
 	}
 }
