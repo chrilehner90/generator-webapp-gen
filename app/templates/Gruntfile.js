@@ -18,18 +18,18 @@
           livereload: LIVERELOAD_PORT
         },
         scripts: {
-          files: ['app/assets/javascripts/**/*.js', 'test/*Spec.js'],
+          files: ['assets/javascripts/**/*.js', 'test/*Spec.js'],
           tasks: ['test', 'uglify']
         },
         css: { // watch all .scss files and call the sass task to convert them to .css
-          files: 'app/assets/stylesheets/*.scss',
+          files: 'assets/stylesheets/*.scss',
           tasks: ['sass', 'cssmin']
         },
         livereload: {
           files: [
             'index.html',
-            'app/assets/stylesheets/*.css', // reload converted .css file
-            'app/assets/javascripts/*.js'
+            'assets/stylesheets/*.css', // reload converted .css file
+            'assets/javascripts/*.js'
           ]
         }
       },
@@ -60,13 +60,23 @@
             style: 'expanded'
           },
           files: {
-            'app/assets/stylesheets/css/style.css': 'app/assets/stylesheets/scss/style.scss',
+            'assets/stylesheets/css/main.css': 'assets/stylesheets/scss/style.scss',
+          }
+        }
+      },
+      cssmin: {
+        combine: {
+          files: {
+            'assets/stylesheets/css/min/main.min.css': [ 
+              'bower_components/bootstrap/dist/css/bootstrap.min.css',
+              'assets/stylesheets/css/*.css'
+            ]
           }
         }
       },
       jasmine: {
         pivotal: {
-          src: 'app/assets/javascripts/**/*.js',
+          src: 'assets/javascripts/**/*.js',
           options: {
             specs: 'test/*Spec.js',
             helpers: 'test/*Helper.js'
@@ -74,7 +84,7 @@
         }
       },
       jshint: {
-        all: ['Gruntfile.js', 'app/assets/javascripts/**/*.js', 'test/**/*.js']
+        all: ['Gruntfile.js', 'assets/javascripts/**/*.js', 'test/**/*.js']
       },
       concat: {
         options: {
@@ -82,9 +92,9 @@
         },
         dist: {
           src: [
-                'app/assets/javascripts/**/*.js'
+                'assets/javascripts/**/*.js'
               ],
-          dest: 'app/assets/javascripts/main.js'
+          dest: 'assets/javascripts/main.js'
         }
       },
       uglify: {
@@ -95,18 +105,7 @@
         },
         my_target: {
           files: {
-            'app/assets/javascripts/min/main.min.js': ['app/assets/javascripts/main.js']
-          }
-        }
-      },
-      cssmin: {
-        combine: {
-          files: {
-            'app/assets/stylesheets/css/min/main.min.css': [ 
-              'bower_components/normalize.css/normalize.css',
-              'bower_components/bootstrap/dist/css/bootstrap.min.css',
-              'app/assets/stylesheets/css/*.css'
-            ]
+            'assets/javascripts/min/main.min.js': ['assets/javascripts/main.js']
           }
         }
       }
