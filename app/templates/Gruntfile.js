@@ -111,9 +111,11 @@
       }
     });
 
+    grunt.registerTask('build', ['concat', 'uglify', 'sass', 'cssmin',]);
     grunt.registerTask('test', ['jasmine', 'jshint']);
-    grunt.registerTask('serve', ['test', 'sass', 'concat', 'uglify', 'cssmin', 'connect:livereload', 'open', 'watch']);
+    grunt.registerTask('serve', ['test', 'build', 'connect:livereload', 'open', 'watch']);
     grunt.registerTask('s', ['serve']);
+    grunt.registerTask('server', ['serve']);
     
   };
 })();
