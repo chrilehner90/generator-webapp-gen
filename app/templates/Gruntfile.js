@@ -87,17 +87,6 @@
       jshint: {
         all: ['Gruntfile.js', 'assets/javascripts/**/*.js', 'test/**/*.js']
       },
-      concat: {
-        options: {
-          separator: ";"
-        },
-        dist: {
-          src: [
-                'assets/javascripts/**/*.js'
-              ],
-          dest: 'assets/javascripts/main.js'
-        }
-      },
       uglify: {
         options: {
           compress: {
@@ -106,15 +95,15 @@
         },
         my_target: {
           files: {
-            'assets/javascripts/min/main.min.js': ['assets/javascripts/main.js']
+            'assets/javascripts/min/main.min.js': ['assets/javascripts/script.js']
           }
         }
       }
     });
 
-    grunt.registerTask('build', ['concat', 'uglify', 'sass', 'cssmin',]);
+    grunt.registerTask('build', ['uglify', 'sass', 'cssmin',]);
     grunt.registerTask('test', ['jasmine', 'jshint']);
-    grunt.registerTask('serve', ['test', 'build', 'connect:livereload', 'open', 'watch']);
+    grunt.registerTask('serve', ['build', 'connect:livereload', 'open', 'watch']);
     grunt.registerTask('s', ['serve']);
     grunt.registerTask('server', ['serve']);
     
